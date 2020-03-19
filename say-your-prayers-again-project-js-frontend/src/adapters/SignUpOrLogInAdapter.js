@@ -52,7 +52,7 @@ class SignUpOrLogInAdapter {
     .then(r => r.json())
     .then(console.log)
 
-    //.then(new Prayers())
+    .then(new Prayers())
 
     // .then(console.log('I need to load the pre-existing prayers.'))
     //after this adapter function is run by the SignUpOrLogIn instance, that instance should run something like, "document.body.innerHTML = "
