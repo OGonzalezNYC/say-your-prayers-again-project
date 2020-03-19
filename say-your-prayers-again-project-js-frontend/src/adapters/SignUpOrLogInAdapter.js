@@ -26,7 +26,7 @@ class SignUpOrLogInAdapter {
     .then(r => r.json())
     .then(console.log)
 
-    //.then(new Prayers())
+    .then(new Prayers())
 
     // .then(console.log('I need to load the pre-existing prayers.')) //This console.log() works, which means I can chain another function on on to here.
     //"You must enter a unique name and a password. Please try again."
