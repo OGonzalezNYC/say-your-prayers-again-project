@@ -12,13 +12,21 @@ class PrayersAdapter {
   increaseAmens(button) {
     // console.log(button.parentNode)
     //fetch, based on dataset.id amens +=1
-
-    let amensNumberString = button.parentNode.innerHTML;
-    let newAmens = (parseInt(amensNumberString) + 1)
+    //console.log(button.parentNode)
+    // let amensNumberString = button.parentNode.innerHTML;
+    // console.log("The amensNumberString is " + amensNumberString + ".")
+    //let newAmens = parseInt(amensNumberString) + 1
+    // console.log("The newAmens is " + newAmens + ".")
     // console.log(amensNumber)
     let id = button.id.split("-")[1]
+    console.log(id)
+    let amensNumberString = parseInt(document.getElementById(`amens-paragraph-${id}`).innerHTML);
+    console.log(amensNumberString)
+    let newAmens = amensNumberString + 1
+    console.log(newAmens);
     //console.log(id)
-    console.log(document.getElementById(`amens-paragraph-${id}`).innerHTML)
+    //console.log(id)
+    // console.log(document.getElementById(`amens-paragraph-${id}`).innerHTML)
     fetch(this.baseUrl + `/${id}`, {
       method: `PATCH`,
       headers: {
