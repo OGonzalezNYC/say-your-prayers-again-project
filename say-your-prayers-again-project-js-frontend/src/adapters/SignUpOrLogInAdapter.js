@@ -23,10 +23,56 @@ class SignUpOrLogInAdapter {
         }
       })
     })
-    .then(r => r.json())
-    .then(console.log)
+    // .then(r => r.json())
+    // .then(console.log)
+    //
+    // .then(new Prayers())
 
-    .then(new Prayers())
+
+
+
+
+
+        .then(r => r.json())
+        .then(console.log)
+        .then(new Prayers())
+          .then(response => response.json())
+          .then( user => {
+            window.userToken = user.jwt;
+          })
+
+          .then(new Prayers())
+          .then( () => {
+
+            console.log(window.userToken);
+            fetch('http://localhost:3000/api/v1/prayers', {
+              method: 'POST',
+              headers: {
+                Authorization: `Bearer ${window.userToken}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+              },
+              body: JSON.stringify({
+                prayer: {
+                  title: 'title',
+                  body: 'body'
+                }
+              })
+            }).then(response => response.json()).then( response => console.log(response)) ;
+          });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // .then(console.log('I need to load the pre-existing prayers.')) //This console.log() works, which means I can chain another function on on to here.
     //"You must enter a unique name and a password. Please try again."

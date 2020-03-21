@@ -1,3 +1,4 @@
+#Post-tweaking:
 class Api::V1::PrayersController < ApplicationController
   skip_before_action :authorized, only: [:index, :show]
 # May want to consider running "rails g serializer prayer".  Might I also need one for the plural, i.e., "rails g serializer prayers"?
@@ -20,15 +21,20 @@ class Api::V1::PrayersController < ApplicationController
   def update
     @prayer = Prayer.find(params[:id])
 # 403 is an unauthorized error
-    return json: {error: 'Unauthorized'}, status: 403 unless @prayer.user == current_user
+    return render json: {error: 'Unauthorized'}, status: 403 unless @prayer.user == current_user
     @prayer.update(prayer_params)
     render json: @prayer, status: 200
   end
 
+
+# -    return json: {error: 'Unauthorized'}, status: 403 unless @prayer.user == current_user
+# +    return render json: {error: 'Unauthorized'}, status: 403 unless @prayer.user == current_user
+
+
   def destroy
     @prayer = Prayer.find(params[:id])
 # 403 is an unauthorized error
-    return json: {error: 'Unauthorized'}, status: 403 unless @prayer.user == current_user
+    return render json: {error: 'Unauthorized'}, status: 403 unless @prayer.user == current_user
     @prayer.delete
     render json: {prayerId: prayer.id}
   end
@@ -57,7 +63,7 @@ end
 
 
 
-
+#Pre-tweaking:
 # class Api::V1::PrayersController < ApplicationController
 #   skip_before_action :authorized, only: [:index, :show]
 # # May want to consider running "rails g serializer prayer".  Might I also need one for the plural, i.e., "rails g serializer prayers"?

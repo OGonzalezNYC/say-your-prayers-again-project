@@ -20,7 +20,7 @@ class Prayers {
     //console.log(prayers); // The fact that this 1st console.log() works, means that that we're successfully getting the data from the API. Now we need to append that data to the DOM, for which we will define and call a "render" method, as defined below.
 
         //return console.log(prayers) // The fact that this 2nd console.log() works (after having replaced the 1st), again, means that that we're successfully getting the data from the API. (I think that the use of "return" somehow enables "prayers" to get passed along to the next ".then").
-
+        
         prayers.forEach(prayer => this.prayers.push(new Prayer(prayer))) //"this.prayers" is the array of all prayers, as defined above. Given that we are successfully requesting and receiving a JSONized array of all prayers, we need to iterate through that array in order to render each prayer as an individual prayer. So, rather than simply pushing "prayer" into this.prayers, which starts off empty, we push it in AS A NEW INSTANCE of Prayer, defined in prayer.js.
     })
     .then(() => {
