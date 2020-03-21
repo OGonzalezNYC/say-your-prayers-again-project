@@ -8,9 +8,33 @@ class PrayersAdapter {
   getPrayers() {
     return fetch(this.baseUrl).then(res => res.json());
   }
+
+  increaseAmens(button) {
+    // console.log(button.parentNode)
+    //fetch, based on dataset.id amens +=1
+
+    let amensNumberString = button.parentNode.innerHTML;
+    let newAmens = (parseInt(amensNumberString) + 1)
+    // console.log(amensNumber)
+    let id = button.id.split("-")[1]
+    //console.log(id)
+    console.log(document.getElementById(`amens-paragraph-${id}`).innerHTML)
+    fetch(this.baseUrl + `/${id}`, {
+      method: `PATCH`,
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({amens: amensNumberString})
+    })
+    .then(response => response.json())
+    //.console.log(json)
+    // console.log(document.getElementById(`amens-paragraph-${this.id}`))
+    .then(json => { document.getElementById(`amens-paragraph-${id}`).innerHTML = newAmens
+//may need to use .to_string in line 17.
+  })
+
 }
 
-// Eventually, we'll write:
-// let adapter = new PrayersAdapter()
-//and
-// adapter.getPrayers()
+// }
+}

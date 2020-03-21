@@ -9,6 +9,14 @@ class Prayer {
   }
 
   renderLi() {
-    return `<li><div>Title: ${this.title}</div><div>Prayer: ${this.body}</div><div><input type="submit" value="Amen" class="add-amen-button"/> ${this.amens}</div><div>Outcome: ${this.outcome}</div><input type="submit" value="Add Outcome" class="add-outcome-button"/></li><br>`
+    return `<li><div>Title: ${this.title}</div>
+                <div>Prayer: ${this.body}</div>
+                <p id="amens-paragraph-${this.id}">
+                ${this.amens}
+                </p><button type="button" id="amen-${this.id}" class="add-amen-button">Amen</button><p id="outcome-paragraph-${this.id}">Outcome: ${this.outcome}</p>
+                  <button type="button" class="add-outcome-button" id="amen-${this.id}">Add Outcome</button>
+
+            </li>
+            <br>`
   }
 }
